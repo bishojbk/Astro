@@ -1,0 +1,43 @@
+---
+import Container from "../components/Container.astro"
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Welcome to My site">
+	<main class="space-y-20">
+		<Container>
+            <div class="relative flex flex-col-reverse items-center md:flex-row" id="hero">
+                <div class="row items-center py-5 md:pb-20 md:pt-10">
+                    <div class="text-center space-y-10">
+                        <h2 class="text-5xl font-medium leading-none md:text-6xl">We Navigate the <br> digital landscape <br> for success</h2>
+                        <p class="mt-6 mb-8 text-xl font-normal leading-7 sm:mb-12">Our lead generation agency is dedicated to helping businesses of all sizes grow and succeed in the competitive online marketplace. We offer a comprehensive range of services designed to boost your online presence and drive targeted traffic to your website. These services include search engine optimization (SEO) to improve your visibility on search engines, pay-per-click (PPC) advertising to generate immediate leads, social media marketing to engage with your audience on various platforms, and content creation to provide valuable and relevant information to your potential customers. By leveraging these strategies, we aim to deliver measurable results that contribute to the long-term success and growth of your business.</p>
+
+                        <a class="px-9 py-5 bg-zinc-900 hover:bg-white text-white hover:text-black border rounded-2xl justify-items-center md:justify-items-start gap-2.5 inline-flex" rel="noopener noreferrer"  href="https://calendly.com/ejr2057" target="_blank">
+                            <h2 class="text-center text-xl font-normal leading-7">Book a consultation</h2>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex-row items-center">
+                <div class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-6">
+                    <div class="p-4 grayscale transition duration-200 hover:grayscale-0">
+                        <img src="./clients/unnamed.png" class="h-20 w-20 mx-auto" loading="lazy" alt="client logo" width="" height="" />
+                    </div>
+                    <div class="p-4 grayscale transition duration-200 hover:grayscale-0">
+                        <img src="./clients/2.jpg" class="h-24 w-24 mx-auto" loading="lazy" alt="client logo" width="56" height="" />
+                    </div>
+                    <div class="p-4 flex grayscale transition duration-200 hover:grayscale-0">
+                        <img src="./clients/03.svg" class="h-24 w-24 mx-auto" loading="lazy" alt="client logo" width="" height="" />
+                    </div>
+                    <div class="p-4 grayscale transition duration-200 hover:grayscale-0">
+                        <img src="./clients/04.svg" class="h-24 w-24 mx-auto" loading="lazy" alt="client logo" width="" height="" />
+                    </div>
+                    <div class="p-4 grayscale transition duration-200 hover:grayscale-0">
+                        <img src="./clients/7.avif"class="h-24 w-24 mx-auto" loading="lazy" alt="client logo" width="" height="" />
+                    </div>
+                </div>
+            </div>
+        </Container>
+	</main>
+</Layout>

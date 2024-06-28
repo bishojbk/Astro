@@ -1,0 +1,32 @@
+[
+  {
+    "index": 1,
+    "label": "Initial Consultation and Agreement",
+    "description": "Our team initiates by introducing ourselves and understanding your business goals, audience, and budget. We present our digital marketing services and finalize terms through a detailed proposal and contract agreement."
+  },
+  {
+    "index": 2,
+    "label": "Client Onboarding",
+    "description": "We gather necessary client information, introduce our dedicated team members, set up essential tools, and conduct a kickoff meeting to align on project expectations and communication channels."
+  },
+  {
+    "index": 3,
+    "label": "Research and Strategic Planning",
+    "description": "Our approach includes comprehensive industry research, audience analysis, and the development of a tailored digital marketing strategy with SMART goals to achieve your objectives."
+  },
+  {
+    "index": 4,
+    "label": "Campaign Development and Implementation",
+    "description": "We create compelling content, optimize SEO strategies, manage PPC campaigns effectively, and handle social media to ensure the successful execution of our strategy."
+  },
+  {
+    "index": 5,
+    "label": "Monitoring, Analysis, and Reporting",
+    "description": "We diligently monitor campaign performance, analyze data to derive actionable insights, make necessary adjustments for optimization, and provide you with regular detailed reports on ROI and key performance metrics."
+  },
+  {
+    "index": 6,
+    "label": "Review, Optimization, and Renewal",
+    "description": "Our commitment extends to continuous campaign refinement based on performance insights, staying updated with industry trends, maintaining an open feedback loop with you, conducting periodic reviews, and discussing contract renewals to foster ongoing collaboration."
+  }
+]

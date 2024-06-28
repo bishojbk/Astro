@@ -1,0 +1,72 @@
+---
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/free-mode';
+import 'swiper/css/thumbs';
+import 'swiper/css/autoplay';
+
+
+const testimonials = await import("./Data/testimonials.json")
+
+---
+<div class="relative flex flex-col items-center md:flex-row">
+  <div class="swiper-container main">
+    <div class="swiper-wrapper">
+      {testimonials.default.map((testimonial) => (
+        <div class="swiper-slide flex-row items-center my-6 p-10 bg-black text-white rounded-[45px]">
+          <div class="justify-items-center relative w-full border border-lime rounded-3xl">
+            <div class="p-4 md:p-10">
+              <p class="items-center justify-center text-white text-sm md:text-lg font-normal mb-4">{testimonial.quote}</p>
+              <span class="text-lime text-base md:text-xl font-medium">{testimonial.author}<br/></span>
+              <span class="text-white text-lg font-normal">{testimonial.position}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+
+    </div>
+    <!-- Add navigation buttons -->
+    <div class="swiper-button-next pl-3"></div>
+    <div class="swiper-button-prev pr-3"></div>
+  </div>
+  <div class="swiper-container thumbs">
+    <div class="swiper-wrapper">
+    </div>
+  </div>
+</div>
+
+<style>
+    .swiper-container
+    {
+        max-width: 100%;
+        overflow: hidden;
+    }
+</style>
+
+
+<script>
+  import Swiper from 'swiper/bundle';
+  document.addEventListener('DOMContentLoaded', function () {
+  const mainSwiper = new Swiper('.main', {
+    slidesPerView: 1,  
+    spaceBetween: 20,  
+    loop: true,        
+    autoplay:true,
+    navigation: {
+      nextEl: '.swiper-button-next',  
+      prevEl: '.swiper-button-prev',  
+    },
+  });
+
+  // Optional: Initialize Swiper for the thumbs carousel (if needed)
+  const thumbsSwiper = new Swiper('.thumbs', {
+    slidesPerView: 'auto',  
+    spaceBetween: 10,       
+    freeMode: true,        
+    watchSlidesProgress: true,
+  });
+  mainSwiper.controller.control = thumbsSwiper;
+  thumbsSwiper.controller.control = mainSwiper;
+});
+</script>
+

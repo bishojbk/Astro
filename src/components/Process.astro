@@ -1,0 +1,156 @@
+---
+import Container from "./Container.astro"
+import Topic from "./Topic.astro"
+
+const processes = await import("./Data/process.json")
+---
+
+<Container>
+    <div class="relative flex flex-col items-center md:flex-row" id="projects">
+        <Topic title="Our Process" description="Explore our structured approach to lead generation success, tailored to achieve your business goals effectively." />
+    </div>
+
+    {processes.default.map(process => (
+      <div class="group outline-none accordion-section mb-4">
+        <div class="card-section shadow-card bg-zinc-100 rounded-3xl flex justify-between md:px-4 py-3 items-center transition-colors ease duration-500 cursor-pointer md:pr-10 relative">
+          <div class="flex items-center group-focus:text-black px-4 md:px-10 pt-10 w-full transition ease duration-500">
+            <div class="flex pb-10 gap-5 w-full items-center">
+              <div class="flex justify-between w-full items-center rounded-full">
+                <div class="flex items-center gap-5">
+                  {process.index !== null && (
+                    <>
+                      <p class="text-2xl md:text-6xl font-medium flex items-center">
+                        {process.index}
+                      </p>
+                      <p class="lg:text-3xl text-lg">{process.label}</p>
+                    </>
+                  )}
+                </div>
+                <div class="rounded-full border-black md:border-2 flex md:items-center md:bg-zinc-100 h-12 w-12 relative accordion-chevron">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="info-section max-h-0 shadow-card rounded-b-3xl bg-zinc-100 px-4 overflow-hidden transition ease duration-500">
+          <p class="text-justify text-black p-4 md:p-10">
+            {process.description}
+          </p>
+        </div>
+      </div>
+    ))}
+</Container>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+  const accordionSections = document.querySelectorAll('.accordion-section');
+
+  accordionSections.forEach(function(accordionSection) {
+    const infoSection = accordionSection.querySelector('.info-section');
+    const cardSection = accordionSection.querySelector('.card-section');
+
+    accordionSection.addEventListener("click", function() {
+      if (infoSection) {
+        const isOpen = accordionSection.classList.contains("open");
+
+        if (isOpen) {
+          infoSection.classList.remove("max-h-screen");
+          infoSection.classList.remove("!bg-lime");
+          cardSection?.classList.remove("!bg-lime");
+          cardSection?.classList.remove("!shadow-none");
+          cardSection?.classList.remove("!rounded-b-none");
+          cardSection?.classList.remove("!rounded-t-3xl");
+          accordionSection.classList.remove("open");
+        } else {
+          infoSection.classList.add("max-h-screen");
+          infoSection.classList.add("!bg-lime");
+          cardSection?.classList.add("!bg-lime");
+          cardSection?.classList.add("!shadow-none");
+          cardSection?.classList.add("!rounded-b-none");
+          cardSection?.classList.add("!rounded-t-3xl");
+          accordionSection.classList.add("open");
+        }
+
+        accordionSections.forEach(function(section) {
+          if (section !== accordionSection) {
+            const otherInfoSection = section.querySelector('.info-section');
+            const otherCardSection = section.querySelector('.card-section');
+            if (otherInfoSection) {
+              otherInfoSection.classList.remove("max-h-screen");
+            }
+            if (otherCardSection) {
+              otherCardSection.classList.remove("!bg-lime");
+              otherCardSection.classList.remove("!shadow-none");
+              otherCardSection.classList.remove("!rounded-b-none");
+              otherCardSection.classList.remove("!rounded-t-3xl");
+            }
+            section.classList.remove("open");
+          }
+        });
+      }
+    });
+  });
+
+  document.addEventListener("click", function(event:any) {
+    if (!event.target.closest('.accordion-section')) {
+      accordionSections.forEach(function(section) {
+        const infoSection = section.querySelector('.info-section');
+        if (infoSection) {
+          infoSection.classList.remove("max-h-screen");
+        }
+        section.classList.remove("open");
+      });
+    }
+  });
+});
+
+</script>
+
+
+<style>
+.accordion-chevron::before {
+  content: "+";
+  font-size: 50px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s;
+}
+
+.accordion-chevron::after {
+  content: "-";
+  font-size: 50px;
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 768px) {
+  .accordion-chevron::before,
+  .accordion-chevron::after {
+    font-size: 30px;
+  }
+}
+
+  /* Hide both by default */
+  .accordion-chevron::before,
+  .accordion-chevron::after {
+    display: none;
+  }
+
+  /* Show before when not opened */
+  .accordion-section:not(.open) .accordion-chevron::before {
+    display: block;
+  }
+
+  /* Show after when opened */
+  .accordion-section.open .accordion-chevron::after {
+    display: block;
+  }
+</style>
+
+
+
